@@ -1,0 +1,170 @@
+body{
+    background-image: linear-gradient(
+        rgba(0,0,0,0.6),
+        rgba(0,0,0,0.6)),
+        url(../imagenes/bg.jpg);
+}
+
+h2{
+    text-align: center;
+    color:#fff
+}
+
+.formulario{
+    height: auto;
+    width: 100vh;
+    margin: auto;
+    margin-top: 0px;
+    color:#fff
+}
+
+fieldset{
+    text-align: center;
+    align-items: center;
+    margin-bottom: 0px;
+    border: 2px solid white;
+    outline: none;
+    border-radius: 10px;
+}
+
+legend{
+    text-align: center;
+}
+
+.datosE{
+    margin: 15px 15px 15px 15px;
+    display: grid;
+    grid-template-columns: 20% 30% 20% 30%;
+    justify-items: stretch;
+    align-items: center;
+    row-gap: 10px;
+}
+
+.datosE label{
+    padding: 5px;
+    font-size: 2.5vh;
+}
+
+.datosE input{
+    width: 200px; /* Ancho deseado */
+    height: 30px; /* Alto deseado */
+    padding: 5px; /* Espacio interno (padding) */
+    border: 1px solid #ccc; /* Borde opcional */
+    border-radius: 5px; /* Bordes redondeados */
+    text-align: center;
+}
+
+label{
+    text-align: center;
+    padding: 5px;
+    font-size: 3vh;
+}
+
+.pedidocafe{
+    margin: 15px 15px 15px 15px;
+    display: grid;
+    grid-template-columns: 20% 30% 25% 25%;
+    justify-items: stretch;
+    align-items: center;
+    row-gap: 10px;
+}
+
+.pedidocafe input{
+    width: 100px; /* Ancho deseado */
+    height: 25px; /* Alto deseado */
+    padding: 5px; /* Espacio interno (padding) */
+    border: 1px solid #ccc; /* Borde opcional */
+    border-radius: 5px; /* Bordes redondeados */
+    text-align: center;
+}
+
+select option{
+    color: black;
+    text-align: center;
+}
+
+select{
+    height: 60%;
+    width: 80%;
+    background: rgba(255,255,255,0.1);
+    border: 2px solid white;
+    outline: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 1rem;
+    margin: 10px;
+    text-align: center;
+}
+
+hr{
+    margin: 10px;
+}
+
+.allPlatos{
+    margin: 20px 20px 20px 20px;
+    display: grid;
+    grid-template-columns: 1% 30% 1% 30% 1% 30%;
+    justify-items: center;
+    align-items: center;
+    row-gap: 10px;
+    justify-content: space-evenly;
+    
+}
+
+.comentarios-container {
+    text-align: center; /* Centra horizontalmente */
+}
+
+#comentarios {
+    width: 99%; /* Opcional: ajusta el ancho seg�n tus preferencias */
+    text-align: center;
+}
+
+.pago{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#validacion{
+    text-align: center;
+}
+
+#confirmarPedido{
+    display: block;
+    margin: 10px auto;
+    width: 30%;
+    height: 40px;
+    align-items: center;
+    border: 2px solid rgb(255, 255, 255);
+    outline: none;
+    border-radius: 25px;
+    background-color: #b8b0b000; 
+	color:#fff;
+
+}
+
+#confirmarPedido:focus{
+    color: rgb(39, 2, 158);
+    background: rgba(255,255,255,0.8)
+}
+
+#confirmarPedido:hover{
+     background-color: rgb(147, 198, 218); 
+     color:black;
+   
+}
+.header{
+    min-height: 30vh; 
+}
+.menu-logo{
+    width: 150px;
+}
+
+.navbar-nav a:active {
+    background-color: #337ab7; /* Cambia el color de fondo */
+    color: #ce967b; /* Cambia el color del texto */
+  }
+
+  

@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@400;500,600;800&display=swap');
+
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   text-decoration: none;
+   list-style: none;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+.container {
+   max-width: 1200px;
+   margin: 0 auto;
+}
+
+.header {
+    background-image: linear-gradient(
+    rgba(0,0,0,0.6),
+    rgba(0,0,0,0.6)),
+    url(../imagenes/bg.jpg);
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+}
+
+.container .navbar .menu-color{
+        color: #ce967b;    
+}
+
+.menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+        color: #FFFDFC;
+        font-size: 25px;
+        font-weight: 800;
+}
+
+.menu .navbar ul li {
+        position: relative;
+        float: left;
+}
+.menu .navbar ul li a {
+        font-size: 24px;
+        padding: 20px;
+        color: #FFFDFC;
+        display: block;
+        font-weight: 600;
+}
+
+.menu .navbar ul li a:hover {
+        color: #ce967b;
+}
+
+#menu {
+        display: none;
+}
+
+.menu-icono {
+        width: 25px;
+}
+
+.menu label {
+        cursor: pointer;
+        display: none;
+}
+
+.menu-logo {
+    width: 150px;
+}
+
+.header-content {
+        text-align: center;
+}
+
+.header-content h1 {
+        font-size: 75px;
+        line-height: 80px;
+        color: #f9fafc;
+        text-transform: uppercase;
+        margin-bottom: 35px;
+}
+
+.header-content p {
+        font-size: 16px;
+        color: #c5c5c5;
+        padding: 0 250px;
+        margin-bottom: 25px;
+}
+
+.btn-1 {
+    display: inline-block;
+    padding: 11px 35px;
+    background-color: #ce967b;
+    color: #f9fafc;
+    text-transform: uppercase;
+}
+
+.btn-1:hover {
+    background-color: #ebad8d;
+}
+
+
+
+
+
+.contact_form{	
+	width: 460px; 
+  height: auto;
+  margin: 80px auto;
+	border-radius: 10px;  
+	padding-top: 30px;
+	padding-bottom: 20px;  
+/*  background-color: #fbfbfb;*/ 
+  padding-left: 30px; 
+}
+
+
+input{
+	background-color: #fbfbfb; 
+	width: 408px; 
+	height: 40px; 
+	border-radius: 5px;  
+	border-style: solid; 
+	border-width: 1px; 
+	border-color: #ab4493; 
+	margin-top: 10px;  
+	padding-left: 10px;
+  margin-bottom: 20px; 
+}
+
+
+textarea{
+/*  background-color: #fbfbfb;*/ 
+	width: 405px; 
+	height: 150px; 
+	border-radius: 5px;  
+	border-style: solid; 
+	border-width: 1px; 
+	border-color: #ab4493; 
+	margin-top: 10px;  
+	padding-left: 10px;
+  margin-bottom: 20px; 
+  padding-top: 15px; 
+}
+
+
+label{
+  display: block; 
+	float: center; 	
+        color: #FFFDFC;
+}
+
+
+button{
+	height: 45px; 
+	padding-left: 5px;
+	padding-right: 5px; 	
+	margin-bottom: 20px; 
+	margin-top: 10px; 	
+	text-transform: uppercase;
+	background-color: #b8b0b000; 
+	border-color: #ffffff; 
+	border-style: solid; 
+	border-radius: 10px;	
+	width: 420px;   
+  cursor: pointer;
+}
+
+
+button p{
+	color: #fff; 
+}
+
+
+span{
+	color: #ffffff; 
+}
+
+
+.aviso{
+	font-size: 13px;  
+	color: #ffffff;  
+}
+
+
+h1{
+	font-size: 39px;  
+	text-align: letf; 
+	padding-bottom: 20px; 
+	color: #ffffff;
+}
+
+
+h3{
+	font-size: 16px; 
+	padding-bottom: 30px;
+	color: #ffffff;
+
+}
+
+p {
+	font-size: 14px; 
+	color: #ffffff;
+}
+
+
+
+
+::-webkit-input-placeholder {
+ color: #a8a8a8;
+}
+
+
+::-webkit-textarea-placeholder {
+ color: #a8a8a8;
+}
+
+
+.formulario input:focus{
+	outline:0;
+	border: 1px solid #97d848;
+}
+
+
+.formulario textarea:focus{
+	outline:0;
+	border: 1px solid #97d848;
+}
+
+.footer{
+        padding: 50px 0;
+        background-color: #000000;
+}
+
+.footer-content {
+        display: flex;
+        justify-content: space-between;
+}
+
+.link h3{
+        font-size: 18px;
+        color: #f9fafc;
+        margin-bottom: 15px;
+}
+
+.link a {
+        font-size: 16px;
+        color: #c5c5c5;
+        display: block;
+        margin-bottom: 15px;
+}
+
+.navbar-nav a:active {
+        background-color: #337ab7; /* Cambia el color de fondo */
+        color: #ce967b; /* Cambia el color del texto */
+      }
