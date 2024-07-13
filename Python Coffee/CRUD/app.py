@@ -127,7 +127,7 @@ catalogo = Catalogo(host='localhost', user='root', password='', database='miapp'
 
 
 # Carpeta para guardar las imagenes.
-RUTA_DESTINO = 'static/imagenes/'
+RUTA_DESTINO = 'CRUD/static/imagenes/'
 
 #Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
 #RUTA_DESTINO = '/home/USUARIO/mysite/static/imagenes'
