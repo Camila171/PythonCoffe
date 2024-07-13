@@ -1,24 +1,24 @@
-body{
-    background-image: linear-gradient(
-        rgba(0,0,0,0.6),
-        rgba(0,0,0,0.6)),
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)),
         url(../imagenes/bg.jpg);
 }
 
-h2{
+h2 {
+    font-size: 39px;
     text-align: center;
-    color:#fff
+    color: #fff
 }
 
-.formulario{
+.formulario {
     height: auto;
     width: 100vh;
     margin: auto;
     margin-top: 0px;
-    color:#fff
+    color: #fff
 }
 
-fieldset{
+fieldset {
     text-align: center;
     align-items: center;
     margin-bottom: 0px;
@@ -27,11 +27,11 @@ fieldset{
     border-radius: 10px;
 }
 
-legend{
+legend {
     text-align: center;
 }
 
-.datosE{
+.datosE {
     margin: 15px 15px 15px 15px;
     display: grid;
     grid-template-columns: 20% 30% 20% 30%;
@@ -40,27 +40,32 @@ legend{
     row-gap: 10px;
 }
 
-.datosE label{
+.datosE label {
     padding: 5px;
     font-size: 2.5vh;
 }
 
-.datosE input{
-    width: 200px; /* Ancho deseado */
-    height: 30px; /* Alto deseado */
-    padding: 5px; /* Espacio interno (padding) */
-    border: 1px solid #ccc; /* Borde opcional */
-    border-radius: 5px; /* Bordes redondeados */
+.datosE input {
+    width: 200px;
+    /* Ancho deseado */
+    height: 30px;
+    /* Alto deseado */
+    padding: 5px;
+    /* Espacio interno (padding) */
+    border: 1px solid #ccc;
+    /* Borde opcional */
+    border-radius: 5px;
+    /* Bordes redondeados */
     text-align: center;
 }
 
-label{
+label {
     text-align: center;
     padding: 5px;
     font-size: 3vh;
 }
 
-.pedidocafe{
+.pedidocafe {
     margin: 15px 15px 15px 15px;
     display: grid;
     grid-template-columns: 20% 30% 25% 25%;
@@ -69,24 +74,29 @@ label{
     row-gap: 10px;
 }
 
-.pedidocafe input{
-    width: 100px; /* Ancho deseado */
-    height: 25px; /* Alto deseado */
-    padding: 5px; /* Espacio interno (padding) */
-    border: 1px solid #ccc; /* Borde opcional */
-    border-radius: 5px; /* Bordes redondeados */
+.pedidocafe input {
+    width: 100px;
+    /* Ancho deseado */
+    height: 25px;
+    /* Alto deseado */
+    padding: 5px;
+    /* Espacio interno (padding) */
+    border: 1px solid #ccc;
+    /* Borde opcional */
+    border-radius: 5px;
+    /* Bordes redondeados */
     text-align: center;
 }
 
-select option{
+select option {
     color: black;
     text-align: center;
 }
 
-select{
+select {
     height: 60%;
     width: 80%;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     border: 2px solid white;
     outline: none;
     border-radius: 25px;
@@ -96,11 +106,11 @@ select{
     text-align: center;
 }
 
-hr{
+hr {
     margin: 10px;
 }
 
-.allPlatos{
+.allPlatos {
     margin: 20px 20px 20px 20px;
     display: grid;
     grid-template-columns: 1% 30% 1% 30% 1% 30%;
@@ -108,30 +118,36 @@ hr{
     align-items: center;
     row-gap: 10px;
     justify-content: space-evenly;
-    
+
 }
 
 .comentarios-container {
-    text-align: center; /* Centra horizontalmente */
+    text-align: center;
+    /* Centra horizontalmente */
 }
 
 #comentarios {
-    width: 99%; /* Opcional: ajusta el ancho seg�n tus preferencias */
+    width: 99%;
+    /* Opcional: ajusta el ancho seg�n tus preferencias */
     text-align: center;
 }
 
-.pago{
+.pago {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
 }
 
-#validacion{
+#validacion {
     text-align: center;
 }
 
-#confirmarPedido{
+#clienteStatus {
+    text-align: center;
+}
+
+.confirmarPedido {
     display: block;
     margin: 10px auto;
     width: 30%;
@@ -140,31 +156,33 @@ hr{
     border: 2px solid rgb(255, 255, 255);
     outline: none;
     border-radius: 25px;
-    background-color: #b8b0b000; 
-	color:#fff;
+    background-color: #b8b0b000;
+    color: #fff;
 
 }
 
-#confirmarPedido:focus{
+.confirmarPedido:focus {
     color: rgb(39, 2, 158);
-    background: rgba(255,255,255,0.8)
+    background: rgba(255, 255, 255, 0.8)
 }
 
-#confirmarPedido:hover{
-     background-color: rgb(147, 198, 218); 
-     color:black;
-   
+.confirmarPedido:hover {
+    background-color: rgb(147, 198, 218);
+    color: black;
+
 }
-.header{
-    min-height: 30vh; 
+
+.header {
+    min-height: 30vh;
 }
-.menu-logo{
+
+.menu-logo {
     width: 150px;
 }
 
 .navbar-nav a:active {
-    background-color: #337ab7; /* Cambia el color de fondo */
-    color: #ce967b; /* Cambia el color del texto */
-  }
-
-  
+    background-color: #337ab7;
+    /* Cambia el color de fondo */
+    color: #ce967b;
+    /* Cambia el color del texto */
+}

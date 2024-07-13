@@ -13,7 +13,7 @@ body {
 }
 
 .container {
-   max-width: 1200px;
+   max-width: 100%;
    margin: 0 auto;
 }
 
@@ -25,7 +25,7 @@ body {
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 70vh;
+    min-height: 60vh;
     display: flex;
     align-items: center;
 }
@@ -116,9 +116,9 @@ body {
     background-color: #ebad8d;
 }
 
-/* Milton cambios */
+
 .coffee{
-        padding: 100px 0;
+        padding: 50px 0;
         background-color: #e1e2e6;
         position: relative;
 }
@@ -145,7 +145,7 @@ body {
 
 .coffee-group{
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         margin-bottom: 50px;
 }
 
@@ -172,7 +172,18 @@ body {
         margin-bottom: 15px;
 }
 
-
+.Desayuno img{
+        width: 80%;
+        height: 80%;
+}
+.Merienda img{
+        width: 80%;
+        height: 80%;
+}
+.Brunch img{
+        width: 80%;
+        height: 80%;
+}
 .coffee-group img{
         transition: all 300ms;
 }
@@ -192,7 +203,7 @@ body {
         background-repeat: no-repeat;
         background-size: cover;
         background-attachment: fixed;
-        padding: 100px 0;
+        padding: 50px 0;
 }
 
 .services-content {
@@ -215,9 +226,10 @@ body {
 }
 
 .services-group {
-        display: flex;
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
         justify-content: space-between;
-        margin-bottom: 100px;
+        margin-bottom: 75px;
 }
 
 .services-1{
@@ -226,7 +238,7 @@ body {
 
 .services-1 img{
         /* width: 25px; */
-        margin-bottom: 25px;
+        margin-bottom: 15px;
 }
 
 .services-1 h3{
@@ -264,12 +276,13 @@ body {
 
 
 .general-3 {
-        background-image: url(../imagenes/fondo\ tasas.png);
+        background-image: url(../imagenes/tazas.png);
          background-position: center center;
     background-attachment: contain;
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: 75% 75%;
     width: 50%;
+    background-color: #1f1818;
 }
 
 h2{
@@ -284,12 +297,12 @@ h2{
 .footer{
         padding: 50px 0;
         background-color: #000000;
-        margin-top: 70px;
+        
 }
 
 .footer-content {
         display: flex;
-        justify-content:space-between;
+        justify-content: space-around;
        
 }
 .link h3{
@@ -441,6 +454,7 @@ h2{
         }
 
         .services-group{
+                display: flex;
                 flex-direction: column;
                 margin-bottom: 0;
         }
@@ -482,3 +496,4 @@ h2{
         background-color: #337ab7; /* Cambia el color de fondo */
         color: #ce967b; /* Cambia el color del texto */
       }
+      

@@ -1,22 +1,26 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="imagenes/coffe.ico">
     <title>Python Coffe</title>
+    <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/contacto.css">
 </head>
+
 <body>
 
-    <header class="header" >
+    <header class="header">
 
         <div class="menu container">
             <img src="imagenes/logo.png" class="menu-logo" alt="">
-            <input type="checkbox" id ="menu"/>
+
+            <input type="checkbox" id="menu" />
             <label for="menu">
-                <img src="imagenes/menu.png" class="menu-icono" alt="">
+
             </label>
             <nav class="navbar">
                 <ul>
@@ -24,65 +28,56 @@
                     <li><a href="menu.html">Menu</a></li>
                     <li><a href="pedidos.html">Pedidos</a></li>
                     <li><a href="contacto.html" class="menu-color">Contacto</a></li>
+                    <li><a href="CRUD/index.html">CRUD</a></li>
                 </ul>
             </nav>
         </div>
 
-        <div class="contact_form">
-            <div class="formulario">	
-                <br>
-                <br>
-                <br>		
-                <h1>Formulario de contacto</h1>
-                <h3>Escribenos y en breve nos pondremos en contacto contigo</h3>
-                
-                <form action="https://formspree.io/f/moqgzdbw" method="post">				
-                    <p>
-                        <label for="nombre" class="colocar_nombre">Nombre
-                            <span class="obligatorio">*</span>
-                        </label>
-                        <input type="text" name="introducir_nombre" maxlength="50" id="nombre" required="obligatorio" placeholder="Escribe tu nombre">
-                    </p>
-                                    
-                    <p>
-                        <label for="email" class="colocar_email">Email
-                            <span class="obligatorio">*</span>
-                        </label>
-                        <input type="email" name="introducir_email" id="email" required="obligatorio" placeholder="Escribe tu Email">
-                    </p>
-                                
-                    <p>
-                        <label for="telefone" class="colocar_telefono">Telefono
-                        </label>
-                        <input type="tel" name="introducir_telefono" id="telefono" placeholder="Escribe tu telefono">
-                    </p>		
-                                         
-                    <p>
-                        <label for="asunto" class="colocar_asunto">Asunto
-                            <span class="obligatorio">*</span>
-                        </label>
-                        <input type="text" name="introducir_asunto" id="assunto" required="obligatorio" placeholder="Escribe un asunto">
-                    </p>		
-                                    
-                    <p>
-                        <label for="mensaje" class="colocar_mensaje">Mensaje
-                            <span class="obligatorio">*</span>
-                        </label>                     
-                        <textarea name="introducir_mensaje" class="texto_mensaje" id="mensaje" required="obligatorio" placeholder="Deja aqui tu comentario..."></textarea> 
-                    </p>	  								
-                    <p class="aviso">
-                        <span class="obligatorio">  </span> * Los campos son obligatorios.
-                    </p>					
-               <br>
-                    <button type="submit" name="enviar_formulario" id="enviar"><p>Enviar</p></button>
-    
-                    					
-    
-                </form>
-            </div>	
-        </div>
+
     </header>
 
+    <main>
+        <div class="formulario">
+            <h2>Formulario de contacto</h1>
+                <form name="contacto" action="https://formspree.io/f/moqgzdbw" method="post">
+                  
+                        <label for="nombre">Nombre
+                            <span class="obligatorio">*</span>
+                        </label>
+                        <input type="text" name="nombre" maxlength="15" id="nombre" required="obligatorio" placeholder="Ingrese su nombre">
+
+                        <label for="email">Email
+                            <span class="obligatorio">*</span>
+                        </label>
+                        <input type="email" name="correo" id="correo" required="obligatorio" placeholder="Ingrese su email">
+                
+                        <label for="telefono">Telefono: </label>
+                        <input name="telefono" placeholder="Ingrese su telefono" id="telefono" type="tel">
+
+                        <label for="asunto">Asunto
+                            <span class="obligatorio">*</span>
+                        </label>
+                        <input type="text" name="asunto" id="asunto" required="obligatorio" placeholder="Escribe un asunto" maxlength="50">
+
+                        <label for="mensaje">Mensaje
+                            <span class="obligatorio">*</span>
+                        </label>
+                        <textarea name="mensaje" class="mensaje" id="mensaje" required="obligatorio" placeholder="Deja aqui tu comentario..."></textarea>
+
+                    <p class="aviso">
+                        <span class="obligatorio"> </span> * Los campos son obligatorios.
+                    </p>
+
+                    <br>
+                    <p id="validacion"></p>
+                    <button type="button" name="enviar" id="enviar"  onclick="validacionContacto()">
+                        <p>Enviar</p>
+                    </button>
+
+                </form>
+        </div>
+    </main>
+    <script src="js/validacionContacto.js"></script>
     <footer class="footer">
         <div class="footer-content container">
             <div class="link">
@@ -91,16 +86,14 @@
                     <li><a href="#">Desayunos</a></li>
                     <li><a href="#">Meriendas</a></li>
                     <li><a href="#">Brunchs</a></li>
-                    
                 </ul>
             </div>
             <div class="link">
                 <h3>Servicios</h3>
                 <ul>
-                    <li><a href="#">Delivery</a></li>
-                    <li><a href="#">Cafe Solidario</a></li>
-                    <li><a href="#">Canjear puntos acumulables</a></li>
-                   
+                    <li><a href="pedidos.html">Delivery</a></li>
+                    <li><a href="pedidos.html">Cafe Solidario</a></li>
+                    <li><a href="pedidos.html">Canjear puntos acumulables</a></li>
                 </ul>
             </div>
             <div class="link">
@@ -109,13 +102,10 @@
                     <li><a href="#">Numero de celular</a></li>
                     <li><a href="#">Direccion</a></li>
                     <li><a href="#">Instagram</a></li>
-                   
                 </ul>
             </div>
         </div>
     </footer>
-	
-
 </body>
-</html>
 
+</html>

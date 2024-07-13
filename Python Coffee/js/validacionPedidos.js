@@ -1,6 +1,91 @@
+function limpiarDatos(){
+    document.getElementById("rebuscarcorreo").style.display = "none";
+    document.getElementById("clienteStatus").innerHTML = "";
+    document.getElementById("clienteStatus").style.color = "#fff"
+    document.getElementById("clienteStatus").style.marginBottom = "20%";
+    document.getElementById("validacion").innerHTML = "";
+    document.getElementById("validacion").style.color = "#fff"
+    document.getElementById("validPedido").style.display = "none";
+}
+function desconectar(){
+    document.querySelector('.rpedido').style.display = 'none';
+    document.querySelector('.clientePanel').style.display = 'none';
+    //Mostrar busquedad email
+    document.getElementById('saludo').textContent = "Pedidos";
+    const mostrarbusquedadmail = document.querySelector('form[name="busquedadcorreo"]');
+    mostrarbusquedadmail.style.display = 'block';
+    document.pedidos.reset();
+    document.busquedadcorreo.reset();
+    limpiarDatos();
+}
+function realizarPedidos(){
+    document.querySelector('.rpedido').style.display = 'block';
+    document.getElementById("validPedido").style.display = "block";
+    /*cargar el formulario todos los datos*/
+}
+function reingresarCorreo(){
+    desconectar();
+    limpiarDatos();
+}
+function buscarCorreo(){
+    limpiarDatos();
+    cEMsj = document.getElementById("clienteStatus")
+    cEMsj.style.color = "#fff"
+    const validMail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // Verificacion formato email
+    if ((!validMail.test(document.getElementById('correob').value)) || (document.busquedadcorreo.correob.value.length < 5)) {
+        document.busquedadcorreo.correob.focus()
+        cEMsj.style.color = "red"
+        cEMsj.innerHTML = "Correo incorrecto"
+        return
+    }
+
+    const URL = "http://127.0.0.1:5000/"
+    const formData = new FormData(document.forms.busquedadcorreo);
+
+    emailb = document.getElementById('correob').value;
+
+    fetch(URL + 'clientes/' + emailb)
+        .then(function (response) {
+        if (response.ok) {
+            return response.json(); 
+        } else {
+            throw new Error('Error al obtener el cliente.');
+        }
+    })
+    .then(data => {
+        document.pedidos.nombre.value = data.nombre;
+        document.pedidos.apellido.value = data.apellido;
+        document.pedidos.telefono.value = data.telefono;
+        document.pedidos.correo.value = data.email;
+        document.pedidos.calle.value = data.direccion;
+        document.pedidos.cp.value = data.cp;
+
+        document.getElementById('saludo').textContent = "¡Bienvenido "+data.nombre+" "+data.apellido+"!";
+        document.querySelector('.clientePanel').style.display = 'block';
+        cEMsj.style.marginBottom = "2%";
+        //Ocultar busquedad email
+        const ocultarbusquedadmail = document.querySelector('form[name="busquedadcorreo"]');
+        ocultarbusquedadmail.style.display = 'none';
+        
+    })
+    .catch(error => {
+        document.pedidos.correo.value = emailb;
+        cEMsj.innerHTML = "Es tu primer pedido en nuestra pagina, ¡Bienvenido! <br>";
+        cEMsj.innerHTML += "Si es un error, ingresa el correo nuevamente para una nueva busquedad. ";
+        cEMsj.style.marginBottom = "2%";
+        document.getElementById("rebuscarcorreo").style.display = "block";
+        realizarPedidos();
+        //Ocultar busquedad email
+        const ocultarbusquedadmail = document.querySelector('form[name="busquedadcorreo"]');
+        ocultarbusquedadmail.style.display = 'none';
+    });
+    
+    //Bloquear editar email
+    document.getElementById("correo").readOnly = true;
+}
+
 function validarPedidos(){
     valMsj = document.getElementById("validacion")
-    valMsj.innerHTML = ""
     const validLetras = /^[a-zA-Z\s]*$/; // Verificacion solo letras
     const validNumPos = /^\d+$/; // Verificacion solo numeros
     const validMail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // Verificacion formato email
@@ -100,9 +185,59 @@ function validarPedidos(){
         valMsj.innerHTML = "Se ha excedido el maximo de caracteres permitidos como comentario. "
         return
     };
+/*
+    if (comentariosInput.trim() === '') {
+        document.pedidos.comentarios.focus()
+        valMsj.style.color = "red"
+        valMsj.innerHTML = "No se ha introducido ningun mensaje. "
+        return
+    };
+*/
+    const URL = "http://127.0.0.1:5000/"
+    
+    //Al subir al servidor, deberÃ¡ utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
+    //const URL = "https://USUARIO.pythonanywhere.com/"
+    
+    const formData = new FormData(document.forms.pedidos);
 
-    document.pedidos.submit()
+/*  // Crear un mensaje con los datos del FormData
+    let mensaje = 'Datos del formulario:\n';
+    for (const [clave, valor] of formData.entries()) {
+        mensaje += `${clave}: ${valor}\n`;
+    }
+
+    alert(mensaje);
+ */  
+    fetch(URL + 'clientes', {
+        method: 'POST',
+        body: formData
+    })
+
+    .then(function (response) {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('Error al agregar el producto.');
+        }
+    })
+
+    .then(function (data) {
+        alert('Cliente agregado correctamente.');
+    })
+
+    .catch(function (error) {
+        alert('Error al agregar el cliente.' + error.message);
+    })
+
+    .finally(function () {
+        //document.pedidos.submit();
+        document.pedidos.reset();
+        document.getElementById("validPedido").style.display = "none";
+        document.getElementById("validacion").innerHTML = "";
+        document.getElementById("validacion").style.color = "#fff"
+    });
 }
+
 
 // Autoseleccionar cafe si se accede desde menu
 const urlParams = new URLSearchParams(window.location.search);

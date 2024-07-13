@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,17 +9,20 @@
     <title>Python Coffe</title>
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/pedidos.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@400;500,600;800&display=swap">
 </head>
+
 <body>
 
-    <header class="header" >
+    <header class="header">
 
         <div class="menu container">
             <img src="imagenes/logo.png" class="menu-logo" alt="">
-            
-            <input type="checkbox" id ="menu"/> 
+
+            <input type="checkbox" id="menu" />
             <label for="menu">
-               
+
             </label>
             <nav class="navbar">
                 <ul>
@@ -26,90 +30,113 @@
                     <li><a href="menu.html">Menu</a></li>
                     <li><a href="pedidos.html" class="menu-color">Pedidos</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="CRUD/index.html">CRUD</a></li>
                 </ul>
             </nav>
         </div>
 
-       
+
     </header>
 
     <main>
         <div class="formulario">
-            <h2>Realizar pedido</h2>
-            <form name="pedidos" action="https://formspree.io/f/mleqyjqo" method="POST">
-                <fieldset>
-                    <legend> Datos de Envio </legend>
-                    <div class="datosE">
-                        <label for="nombre">Nombre: </label>
-                        <input required name="nombre" placeholder="Ingrese su nombre" id="nombre" type="text" maxlength="15" >
-                        
-                        <label for="apellido">Apellido: </label>
-                        <input required name="apellido" placeholder="Ingrese su apellido" id="apellido" type="text" maxlength="15" >
-                        
-                        <label for="telefono">Telefono: </label>
-                        <input required name="telefono" placeholder="Ingrese su telefono" id="telefono" type="tel">
-                        
-                        <label for="correo">Email:</label>
-                        <input required name="correo" placeholder="Ingrese su email" id="correo" type="email" >
+            <div class="cliente">
+                <h2 id="saludo">Pedidos</h2>
+                <form name="busquedadcorreo" style="text-align: center;">
+                    <label for="correob">Ingresa tu correo:</label>
+                    <input name="correob" placeholder="" id="correob" type="emailb"><br><br>
+                    <input type="button" id="buscarcorreo" class="confirmarPedido" value="Buscar" onclick="buscarCorreo()" style="display: block;">
+                </form>
+                <p id="clienteStatus" style="margin-bottom: 20%;"></p>
+                <input type="button" id="rebuscarcorreo" class="confirmarPedido" value="Buscar otro correo" onclick="reingresarCorreo()" style="display: none; ">
+                <div class="clientePanel" style="display: none;">
+                    <input type="button" id="addpedido" class="confirmarPedido" value="Realizar pedido" onclick="realizarPedidos()">
+                    <input type="button" id="viewpedido" class="confirmarPedido" value="Ver mis pedidos" onclick="verPedidos()">
+                    <input type="button" id="modcliente" class="confirmarPedido" value="Editar mis datos" onclick="editarDatos()">
+                    <input type="button" id="desc" class="confirmarPedido" value="Desconectarme" onclick="desconectar()">
                     
-                        <label for="calle">Direccion:</label>
-                        <input required name="calle" placeholder="Ingrese su direccion" id="calle" type="text" maxlength="30">
-                        
-                        <label for="cp">Codigo Postal:</label>
-                        <input required name="cp" placeholder="Ingrese su codigo postal" id="cp" type="text">
+                </div> 
+            </div>
+            <div class="rpedido" style="display: none;">
+                <h2>Realizar pedido</h2>
+                <form name="pedidos" enctype="multipart/form-data" method="POST">
+                    <fieldset>
+                        <legend> Datos de Envio </legend>
+                        <div class="datosE">
+                            <label for="nombre">Nombre: </label>
+                            <input required name="nombre" placeholder="Ingrese su nombre" id="nombre" type="text"
+                                maxlength="15">
 
-                    </div> 
-                </fieldset>
-                <fieldset>
-                    <legend> Pedido </legend>
-                    <div class="pedidocafe">
-                        <label for="cafe">Cafe:</label>
-                        <select id="cafe" name="cafe" required>
-                            <option value="nonsel">Seleccionar</option>
-                            <option value="cafe1">Espresso</option>
-                            <option value="cafe2">Americano</option>
-                            <option value="cafe3">Cortado</option>
-                            <option value="cafe4">Macchiato</option>
-                            <option value="cafe5">Lagrima</option>
-                            <option value="cafe6">Capuchino</option>
-                        </select>
-                        <label for="cafecnt">Cantidad:</label>
-                        <input type="number" id="cafecnt" name="cafecnt" value="1" min="1" max="10" required>
-                    </div>
-                    <hr>
-                    <label for="plato">AÑADIR</label>
-                    <hr>
-                    <div class="allPlatos">
-                        <input type="checkbox" id="cbox" name="plato" value="com1"> Medialunas
-                        <input type="checkbox" id="cbox" name="plato" value="com2"> Tostadas
-                        <input type="checkbox" id="cbox" name="plato" value="com3"> Mix Saludable
-                        <input type="checkbox" id="cbox" name="plato" value="com4"> Sandwiches
-                        <input type="checkbox" id="cbox" name="plato" value="com5"> Panqueques
-                        <input type="checkbox" id="cbox" name="plato" value="com6"> Tortas
-                        <input type="checkbox" id="cbox" name="plato" value="com7"> Guafles
-                        <input type="checkbox" id="cbox" name="plato" value="com8"> Churros
-                        <input type="checkbox" id="cbox" name="plato" value="com9"> Tartas
-                        <input type="checkbox" id="cbox" name="plato" value="com10"> Homelet
-                        <input type="checkbox" id="cbox" name="plato" value="com11"> Completo para compartir
-                        <input type="checkbox" id="cbox" name="plato" value="com12"> Gran Completo
-                    </div>   
-                    <hr> 
-                    <div class="pago">
-                        <label for="metpag">Metodo de Pago: </label>
-                        <input type="radio" name="metpago" value="credcard" checked>Tarjeta de Credito
-                        <input type="radio" name="metpago" value="debcard">Tarjeta de Debito
-                    </div>
-                    <hr>
-                    <div class="comentarios-container"></div>
+                            <label for="apellido">Apellido: </label>
+                            <input required name="apellido" placeholder="Ingrese su nombre" id="apellido" type="text"
+                                maxlength="15">
+
+                            <label for="telefono">Telefono: </label>
+                            <input required name="telefono" placeholder="Ingrese su telefono" id="telefono" type="tel">
+
+                            <label for="correo">Email:</label>
+                            <input required name="correo" placeholder="Ingrese su email" id="correo" type="email">
+
+                            <label for="calle">Direccion:</label>
+                            <input required name="calle" placeholder="Ingrese su direccion" id="calle" type="text"
+                                maxlength="30">
+
+                            <label for="cp">Codigo Postal:</label>
+                            <input required name="cp" placeholder="Ingrese su codigo postal" id="cp" type="text">
+
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend> Pedido </legend>
+                        <div class="pedidocafe">
+                            <label for="cafe">Cafe:</label>
+                            <select id="cafe" name="cafe" required>
+                                <option value="nonsel">Seleccionar</option>
+                                <option value="cafe1">Espresso</option>
+                                <option value="cafe2">Americano</option>
+                                <option value="cafe3">Cortado</option>
+                                <option value="cafe4">Macchiato</option>
+                                <option value="cafe5">Lagrima</option>
+                                <option value="cafe6">Capuchino</option>
+                            </select>
+                            <label for="cafecnt">Cantidad:</label>
+                            <input type="number" id="cafecnt" name="cafecnt" value="1" min="1" max="10" required>
+                        </div>
+                        <hr>
+                        <label for="plato">AÑADIR</label>
+                        <hr>
+                        <div class="allPlatos">
+                            <input type="checkbox" id="cbox" name="plato" value="com1"> Medialunas
+                            <input type="checkbox" id="cbox" name="plato" value="com2"> Tostadas
+                            <input type="checkbox" id="cbox" name="plato" value="com3"> Mix Saludable
+                            <input type="checkbox" id="cbox" name="plato" value="com4"> Sandwiches
+                            <input type="checkbox" id="cbox" name="plato" value="com5"> Panqueques
+                            <input type="checkbox" id="cbox" name="plato" value="com6"> Tortas
+                            <input type="checkbox" id="cbox" name="plato" value="com7"> Guafles
+                            <input type="checkbox" id="cbox" name="plato" value="com8"> Churros
+                            <input type="checkbox" id="cbox" name="plato" value="com9"> Tartas
+                            <input type="checkbox" id="cbox" name="plato" value="com10"> Homelet
+                            <input type="checkbox" id="cbox" name="plato" value="com11"> Completo para compartir
+                            <input type="checkbox" id="cbox" name="plato" value="com12"> Gran Completo
+                        </div>
+                        <hr>
+                        <div class="pago">
+                            <label for="metpag">Metodo de Pago: </label>
+                            <input type="radio" name="metpago" value="credcard" checked>Tarjeta de Credito
+                            <input type="radio" name="metpago" value="debcard">Tarjeta de Debito
+                        </div>
+                        <hr>
+                        <div class="comentarios-container"></div>
                         <label for="comentarios">Comentarios:</label><br>
                         <textarea id="comentarios" name="comentarios" rows="4" maxlength="380"></textarea>
-                    </div>
-                </fieldset>
-                
-                <p id="validacion"></p>
-                <input type="button" id="confirmarPedido" value="CONFIRMAR PEDIDO" onclick="validarPedidos()">
-                <br>               
+            </div>
+            </fieldset>
+
+            <p id="validacion"></p>
+            <input type="button" id="validPedido" class="confirmarPedido" value="CONFIRMAR PEDIDO" onclick="validarPedidos()" style="display: none;">
+            <br>
             </form>
+            </div>
         </div>
     </main>
     <script src="js/validacionPedidos.js"></script>
@@ -142,4 +169,5 @@
         </div>
     </footer>
 </body>
+
 </html>
