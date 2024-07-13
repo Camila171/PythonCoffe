@@ -1,3 +1,9 @@
+function ocultarFormularios(){
+    document.querySelector('.rpedido').style.display = 'none';
+    document.getElementById("validPedido").style.display = "none";
+    document.querySelector('.mcliente').style.display = 'none';
+    document.getElementById("moddatos").style.display = "none";
+}
 function limpiarDatos(){
     document.getElementById("rebuscarcorreo").style.display = "none";
     document.getElementById("clienteStatus").innerHTML = "";
@@ -8,7 +14,7 @@ function limpiarDatos(){
     document.getElementById("validPedido").style.display = "none";
 }
 function desconectar(){
-    document.querySelector('.rpedido').style.display = 'none';
+    ocultarFormularios();
     document.querySelector('.clientePanel').style.display = 'none';
     //Mostrar busquedad email
     document.getElementById('saludo').textContent = "Pedidos";
@@ -19,8 +25,15 @@ function desconectar(){
     limpiarDatos();
 }
 function realizarPedidos(){
+    ocultarFormularios();
     document.querySelector('.rpedido').style.display = 'block';
     document.getElementById("validPedido").style.display = "block";
+    /*cargar el formulario todos los datos*/
+}
+function editarDatos(){
+    ocultarFormularios();
+    document.querySelector('.mcliente').style.display = 'block';
+    document.getElementById("moddatos").style.display = "block";
     /*cargar el formulario todos los datos*/
 }
 function reingresarCorreo(){
@@ -54,11 +67,17 @@ function buscarCorreo(){
     })
     .then(data => {
         document.pedidos.nombre.value = data.nombre;
+        document.moddatos.nombre.value = data.nombre;
         document.pedidos.apellido.value = data.apellido;
+        document.moddatos.apellido.value = data.apellido;
         document.pedidos.telefono.value = data.telefono;
+        document.moddatos.telefono.value = data.telefono;
         document.pedidos.correo.value = data.email;
+        document.moddatos.correo.value = data.email;
         document.pedidos.calle.value = data.direccion;
+        document.moddatos.calle.value = data.direccion;
         document.pedidos.cp.value = data.cp;
+        document.moddatos.cp.value = data.cp;
 
         document.getElementById('saludo').textContent = "¡Bienvenido "+data.nombre+" "+data.apellido+"!";
         document.querySelector('.clientePanel').style.display = 'block';
@@ -82,6 +101,103 @@ function buscarCorreo(){
     
     //Bloquear editar email
     document.getElementById("correo").readOnly = true;
+}
+
+function modificarDatos(){
+    eDMsj = document.getElementById("validaciondatos")
+    eDMsj.style.color = "#fff"
+
+    const validLetras = /^[a-zA-Z\s]*$/; // Verificacion solo letras
+    const validNumPos = /^\d+$/; // Verificacion solo numeros
+    const validMail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // Verificacion formato email
+    const validDir = /^[a-zA-Z0-9\s.,-]*$/; // Verificacion letras y numeros
+
+    if ((!validLetras.test(document.getElementById('enombre').value)) || (document.moddatos.nombre.value.length <=2)) {
+        document.moddatos.nombre.focus()
+        eDMsj.style.color = "red"
+        eDMsj.innerHTML = "Nombre incorrecto"
+        return
+    }
+
+    if ((!validLetras.test(document.getElementById('eapellido').value)) || (document.moddatos.apellido.value.length <=2)) {
+        document.moddatos.apellido.focus()
+        eDMsj.style.color = "red"
+        eDMsj.innerHTML = "Apellido incorrecto"
+        return
+    }
+
+    if ((!validNumPos.test(document.getElementById('etelefono').value)) || (document.moddatos.telefono.value.length !=10)) {
+        document.moddatos.telefono.focus()
+        eDMsj.style.color = "red"
+        eDMsj.innerHTML = "Telefono incorrecto"
+        return
+    }
+
+    if ((!validMail.test(document.getElementById('ecorreo').value)) || (document.moddatos.correo.value.length < 5)) {
+        document.moddatos.correo.focus()
+        eDMsj.style.color = "red"
+        eDMsj.innerHTML = "Correo incorrecto"
+        return
+    }
+
+    if ((!validDir.test(document.getElementById('ecalle').value)) || (document.moddatos.correo.value.length < 8)) {
+        document.moddatos.calle.focus()
+        eDMsj.style.color = "red"
+        eDMsj.innerHTML = "Calle incorrecta"
+        return
+    }
+
+    if(isNaN(parseInt(document.moddatos.cp.value)) || (document.moddatos.cp.value.length !=4) || (!validNumPos.test(document.getElementById('ecp').value))){
+        document.moddatos.cp.focus()
+        eDMsj.style.color = "red"
+        eDMsj.innerHTML = "Codigo Postal Incorrecto"
+        return
+    }
+
+    const URL = "http://127.0.0.1:5000/"
+    const formData = new FormData();
+
+    formData.append('nombre', document.getElementById('enombre').value);
+    formData.append('apellido', document.getElementById('eapellido').value);
+    formData.append('telefono', document.getElementById('etelefono').value);
+    formData.append('calle', document.getElementById('ecalle').value);
+    formData.append('cp', document.getElementById('ecp').value);
+
+    emailm = document.getElementById('ecorreo').value;
+
+    if (document.pedidos.nombre.value == document.moddatos.nombre.value && 
+        document.pedidos.apellido.value == document.moddatos.apellido.value &&
+        document.pedidos.telefono.value == document.moddatos.telefono.value &&
+        document.pedidos.calle.value == document.moddatos.calle.value &&
+        document.pedidos.cp.value == document.moddatos.cp.value 
+    ){
+        alert('No se realizaron cambios en el cliente.');
+        return
+    }
+
+    fetch(URL + 'clientes/' + emailm, {
+        method: 'PUT',
+        body: formData,
+    })
+        .then(response => {
+            if (response.ok) {
+                return response.json()
+            } else {
+                throw new Error('Error al guardar los cambios del Cliente.')
+            }
+        })
+        .then(data => {
+            alert('Cliente actualizado correctamente.');
+            document.pedidos.nombre.value = document.getElementById('enombre').value;
+            document.pedidos.apellido.value = document.getElementById('eapellido').value;
+            document.pedidos.telefono.value = document.getElementById('etelefono').value;
+            document.pedidos.calle.value = document.getElementById('ecalle').value;
+            document.pedidos.cp.value = document.getElementById('ecp').value;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error al actualizar el Cliente.');
+        });
 }
 
 function validarPedidos(){

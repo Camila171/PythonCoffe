@@ -147,6 +147,10 @@ hr {
     text-align: center;
 }
 
+#validaciondatos{
+    text-align: center;
+}
+
 .confirmarPedido {
     display: block;
     margin: 10px auto;

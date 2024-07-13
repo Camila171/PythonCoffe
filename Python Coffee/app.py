@@ -21,7 +21,6 @@ class Pedidos:
         )
         self.cursor = self.conn.cursor()
 
-
         # Intentamos seleccionar la base de datos
         try:
             self.cursor.execute(f"USE {database}")
@@ -83,9 +82,9 @@ class Pedidos:
         self.cursor.close()
         self.cursor = self.conn.cursor(dictionary=True)
         
-    #----------------------------------------------------------------
-    #Clientes
-    #----------------------------------------------------------------
+#----------------------------------------------------------------
+#Clientes
+#----------------------------------------------------------------
     def agregar_cliente(self, nombre, apellido, telefono, email, direccion, cp):
         sql = """INSERT INTO clientes (nombre, apellido, telefono, email, direccion, cp)
           VALUES (%s, %s, %s, %s, %s, %s)"""
@@ -96,13 +95,12 @@ class Pedidos:
         return self.cursor.lastrowid
 
     def consultar_cliente(self, email):
-        # Consultamos un producto a partir de su email
         self.cursor.execute(f"SELECT * FROM clientes WHERE email = '{email}'")
-        return self.cursor.fetchone() #Me da el diccionario o None si no existe
+        return self.cursor.fetchone()
     
-    def modificar_cliente(self, email, n_nombre, n_apellido, n_telefono, n_email, n_direccion, n_cp):
-        sql = "UPDATE clientes SET nombre = %s, apellido = %s, telefono = %s, email = %s, direccion = %s, cp = %s WHERE email = %s"
-        valores = (n_nombre, n_apellido, n_telefono, n_email, n_direccion, n_cp, email)
+    def modificar_cliente(self, email, n_nombre, n_apellido, n_telefono, n_direccion, n_cp):
+        sql = "UPDATE clientes SET nombre = %s, apellido = %s, telefono = %s, direccion = %s, cp = %s WHERE email = %s"
+        valores = (n_nombre, n_apellido, n_telefono, n_direccion, n_cp, email)
         self.cursor.execute(sql, valores)
         self.conn.commit()
         return self.cursor.rowcount > 0
@@ -113,13 +111,11 @@ class Pedidos:
         return clientes
     
     def eliminar_cliente(self, email):
-        # Eliminamos un producto de la tabla a partir de su email
         self.cursor.execute(f"DELETE FROM productos WHERE email = {email}")
         self.conn.commit()
         return self.cursor.rowcount > 0
     
     def mostrar_cliente(self, email):
-        # Mostramos los datos de un producto a partir de su email
         cliente = self.consultar_cliente(email)
         if cliente:
             print("-" * 40)
@@ -133,7 +129,9 @@ class Pedidos:
         else:
             print("Cliente no encontrado.")
 
-    #----------------------------------------------------------------
+#----------------------------------------------------------------
+#Productos
+#----------------------------------------------------------------
     def agregar_producto(self, descripcion, cantidad, precio, imagen, proveedor):
                
         sql = """INSERT INTO productos (descripcion, cantidad, precio, imagen_url, proveedor)
@@ -143,35 +141,30 @@ class Pedidos:
         self.cursor.execute(sql, valores)        
         self.conn.commit()
         return self.cursor.lastrowid
-
-    #----------------------------------------------------------------
+#----------------------------------------------------------------
     def consultar_producto(self, codigo):
         # Consultamos un producto a partir de su código
         self.cursor.execute(f"SELECT * FROM productos WHERE codigo = {codigo}")
         return self.cursor.fetchone() #Me da el diccionario o None si no existe
-
-    #----------------------------------------------------------------
+ #----------------------------------------------------------------
     def modificar_producto(self, codigo, nueva_descripcion, nueva_cantidad, nuevo_precio, nueva_imagen, nuevo_proveedor):
         sql = "UPDATE productos SET descripcion = %s, cantidad = %s, precio = %s, imagen_url = %s, proveedor = %s WHERE codigo = %s"
         valores = (nueva_descripcion, nueva_cantidad, nuevo_precio, nueva_imagen, nuevo_proveedor, codigo)
         self.cursor.execute(sql, valores)
         self.conn.commit()
         return self.cursor.rowcount > 0
-
-    #----------------------------------------------------------------
+#----------------------------------------------------------------
     def listar_productos(self):
         self.cursor.execute("SELECT * FROM productos")
         productos = self.cursor.fetchall()
         return productos
-
-    #----------------------------------------------------------------
+#----------------------------------------------------------------
     def eliminar_producto(self, codigo):
         # Eliminamos un producto de la tabla a partir de su código
         self.cursor.execute(f"DELETE FROM productos WHERE codigo = {codigo}")
         self.conn.commit()
         return self.cursor.rowcount > 0
-
-    #----------------------------------------------------------------
+#----------------------------------------------------------------
     def mostrar_producto(self, codigo):
         # Mostramos los datos de un producto a partir de su código
         producto = self.consultar_producto(codigo)
@@ -186,9 +179,9 @@ class Pedidos:
             print("-" * 40)
         else:
             print("Producto no encontrado.")
-    #----------------------------------------------------------------   
-    #Pedidos
-    #----------------------------------------------------------------     
+#----------------------------------------------------------------   
+#Pedidos
+#----------------------------------------------------------------     
     def agregar_pedido(self, idcliente, idcafe, cantcafe, idcomidas, total, modopago, comentario):
                
         sql = """INSERT INTO pedidos (idCliente, idCafe, cantidadCafe, idComidas, total, modoPago, comentario)
@@ -198,35 +191,30 @@ class Pedidos:
         self.cursor.execute(sql, valores)        
         self.conn.commit()
         return self.cursor.lastrowid
-     
-    #----------------------------------------------------------------
+#----------------------------------------------------------------
     def consultar_pedido(self, codigo):
         # Consultamos un producto a partir de su código
         self.cursor.execute(f"SELECT * FROM pedidos WHERE idPedido = {codigo}")
         return self.cursor.fetchone() #Me da el diccionario o None si no existe
-
-    #----------------------------------------------------------------
+#----------------------------------------------------------------
     def modificar_pedidos(self, codigo, n_idcliente, n_idcafe, n_cantcafe, n_comidas, n_total, n_modpago, n_comentario):
         sql = "UPDATE pedidos SET idCliente = %s, idCafe = %s, cantidadCafe = %s, idComidas = %s, total = %s, modoPago = %s, comentario = %s WHERE idPedido = %s"
         valores = (n_idcliente, n_idcafe, n_cantcafe, n_comidas, n_total, n_modpago, n_comentario, codigo)
         self.cursor.execute(sql, valores)
         self.conn.commit()
         return self.cursor.rowcount > 0
-
-    #----------------------------------------------------------------
+#----------------------------------------------------------------
     def listar_pedidos(self):
         self.cursor.execute("SELECT * FROM pedidos")
         pedidos = self.cursor.fetchall()
         return pedidos
-
-    #----------------------------------------------------------------
+#----------------------------------------------------------------
     def eliminar_pedidos(self, codigo):
         # Eliminamos un producto de la tabla a partir de su código
         self.cursor.execute(f"DELETE FROM pedidos WHERE idPedido = {codigo}")
         self.conn.commit()
         return self.cursor.rowcount > 0
-
-    #----------------------------------------------------------------
+#----------------------------------------------------------------
     def mostrar_pedido(self, codigo):
         # Mostramos los datos de un producto a partir de su código
         pedido = self.consultar_pedido(codigo)
@@ -247,11 +235,9 @@ class Pedidos:
 #--------------------------------------------------------------------
 # Cuerpo del programa
 #--------------------------------------------------------------------
-# SECCION CRUD
 # Crear una instancia de la clase Catalogo
 #catalogo = Catalogo(host='localhost', user='root', password='', database='miapp')
 #catalogo = Catalogo(host='USUARIO.mysql.pythonanywhere-services.com', user='USUARIO', password='CLAVE', database='USUARIO$miapp')
-
 
 # Carpeta para guardar las imagenes.
 RUTA_DESTINO = 'CRUD/static/imagenes/'
@@ -300,8 +286,23 @@ def agregar_pedcliente():
     else:
         #Si el producto no se puede agregar, se devuelve una respuesta JSON con un mensaje de error y un código de estado HTTP 500 (Internal Server Error).
         return jsonify({"mensaje": "Error al agregar el Cliente."}), 500    
-
 #--------------------------------------------------------------------
+#--------------------------------------------------------------------
+# Modificar un cliente según su email
+#--------------------------------------------------------------------
+@app.route("/clientes/<string:email>", methods=["PUT"])
+def modificar_pedcliente(email):
+    #Se recuperan los nuevos datos del formulario
+    n_nombre = request.form.get("nombre")
+    n_apellido = request.form.get("apellido")
+    n_telefono = request.form.get("telefono")
+    n_direccion = request.form.get("calle")
+    n_cp = request.form.get("cp")
+
+    if pedidos.modificar_cliente(email, n_nombre, n_apellido, n_telefono, n_direccion, n_cp):
+        return jsonify({"mensaje": "Cliente modificado"}), 200
+    else:
+        return jsonify({"mensaje": "Cliente no encontrado"}), 404
 #--------------------------------------------------------------------
 # Listar todos los productos
 #--------------------------------------------------------------------
@@ -311,8 +312,6 @@ def agregar_pedcliente():
 def listar_productos():
     productos = pedidos.listar_productos()
     return jsonify(productos)
-
-
 #--------------------------------------------------------------------
 # Mostrar un sólo producto según su código
 #--------------------------------------------------------------------
@@ -325,8 +324,6 @@ def mostrar_producto(codigo):
         return jsonify(producto), 201
     else:
         return "Producto no encontrado", 404
-
-
 #--------------------------------------------------------------------
 # Agregar un producto
 #--------------------------------------------------------------------
@@ -410,9 +407,6 @@ def modificar_producto(codigo):
     else:
         #Si el producto no se encuentra (por ejemplo, si no hay ningún producto con el código dado), se devuelve un mensaje de error con un código de estado HTTP 404 (No Encontrado).
         return jsonify({"mensaje": "Producto no encontrado"}), 404
-
-
-
 #--------------------------------------------------------------------
 # Eliminar un producto según su código
 #--------------------------------------------------------------------

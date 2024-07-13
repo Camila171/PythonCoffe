@@ -136,7 +136,41 @@
             <input type="button" id="validPedido" class="confirmarPedido" value="CONFIRMAR PEDIDO" onclick="validarPedidos()" style="display: none;">
             <br>
             </form>
+            
+            <div class="mcliente" style="display: none;">
+                <h2>Modificar Datos</h2>
+                <form name="moddatos" enctype="multipart/form-data" method="POST">
+                    <fieldset>
+                        <legend> Datos de Envio </legend>
+                        <div class="datosE">
+                            <label for="nombre">Nombre: </label>
+                            <input required name="nombre" placeholder="Ingrese su nombre" id="enombre" type="text"
+                                maxlength="15">
+
+                            <label for="apellido">Apellido: </label>
+                            <input required name="apellido" placeholder="Ingrese su nombre" id="eapellido" type="text"
+                                maxlength="15">
+
+                            <label for="telefono">Telefono: </label>
+                            <input required name="telefono" placeholder="Ingrese su telefono" id="etelefono" type="tel">
+
+                            <label for="correo">Email:</label>
+                            <input required name="correo" placeholder="Ingrese su email" id="ecorreo" type="email">
+
+                            <label for="calle">Direccion:</label>
+                            <input required name="calle" placeholder="Ingrese su direccion" id="ecalle" type="text"
+                                maxlength="30">
+
+                            <label for="cp">Codigo Postal:</label>
+                            <input required name="cp" placeholder="Ingrese su codigo postal" id="ecp" type="text">
+                        </div>
+                    </fieldset>
+                    <p id="validaciondatos"></p>
+                    <input type="button" id="moddatos" class="confirmarPedido" value="MODIFICAR DATOS" onclick="modificarDatos()" style="display: none;">
+                    <br>
+                </form>
             </div>
+            
         </div>
     </main>
     <script src="js/validacionPedidos.js"></script>
