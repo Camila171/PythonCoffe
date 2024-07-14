@@ -235,18 +235,14 @@ class Pedidos:
 #--------------------------------------------------------------------
 # Cuerpo del programa
 #--------------------------------------------------------------------
-# Crear una instancia de la clase Catalogo
-#catalogo = Catalogo(host='localhost', user='root', password='', database='miapp')
-#catalogo = Catalogo(host='USUARIO.mysql.pythonanywhere-services.com', user='USUARIO', password='CLAVE', database='USUARIO$miapp')
-
 # Carpeta para guardar las imagenes.
-RUTA_DESTINO = 'CRUD/static/imagenes/'
+RUTA_DESTINO = '/home/rodriv33/mysite/CRUD/static/imagenes/'
 
 #Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
 #RUTA_DESTINO = '/home/USUARIO/mysite/static/imagenes'
 
 # Crear una instancia de la clase pedidos
-pedidos = Pedidos(host='localhost', user='root', password='', database='pythoncoffe')
+pedidos = Pedidos(host='rodriv33.mysql.pythonanywhere-services.com', user='rodriv33', password='pycoffe_33', database='rodriv33$pythoncoffe')
 #pedidos = pedidos(host='USUARIO.mysql.pythonanywhere-services.com', user='USUARIO', password='CLAVE', database='USUARIO$miapp')
 
 #--------------------------------------------------------------------

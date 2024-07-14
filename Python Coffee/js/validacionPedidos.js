@@ -52,7 +52,7 @@ function buscarCorreo(){
         return
     }
 
-    const URL = "http://127.0.0.1:5000/"
+    const URL = "https://rodriv33.pythonanywhere.com/"
     const formData = new FormData(document.forms.busquedadcorreo);
 
     emailb = document.getElementById('correob').value;
@@ -101,6 +101,7 @@ function buscarCorreo(){
     
     //Bloquear editar email
     document.getElementById("correo").readOnly = true;
+    document.getElementById("ecorreo").readOnly = true;
 }
 
 function modificarDatos(){
@@ -154,7 +155,7 @@ function modificarDatos(){
         return
     }
 
-    const URL = "http://127.0.0.1:5000/"
+    const URL = "https://rodriv33.pythonanywhere.com/"
     const formData = new FormData();
 
     formData.append('nombre', document.getElementById('enombre').value);
@@ -309,7 +310,7 @@ function validarPedidos(){
         return
     };
 */
-    const URL = "http://127.0.0.1:5000/"
+    const URL = "https://rodriv33.pythonanywhere.com/"
     
     //Al subir al servidor, deberÃ¡ utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
     //const URL = "https://USUARIO.pythonanywhere.com/"
